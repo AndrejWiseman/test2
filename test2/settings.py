@@ -1,5 +1,5 @@
 import os
-from os import getenv
+# from os import getenv
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -70,27 +70,27 @@ WSGI_APPLICATION = 'test2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres.tzjjbxwzsqqawowduqdu',
-        'PASSWORD': 'prnjavor2000',
-        'HOST': 'aws-0-eu-central-1.pooler.supabase.com',
-        'PORT': '5432',
-    }
-}
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': getenv('PGDATABASE'),
-#         'USER': getenv('PGUSER'),
-#         'PASSWORD': getenv('PGPASSWORD'),
-#         'HOST': getenv('PGHOST'),
+#         'NAME': 'postgres',
+#         'USER': 'postgres.tzjjbxwzsqqawowduqdu',
+#         'PASSWORD': 'prnjavor2000',
+#         'HOST': 'aws-0-eu-central-1.pooler.supabase.com',
 #         'PORT': '5432',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('PGDATABASE'),
+        'USER': os.getenv('PGUSER'),
+        'PASSWORD': os.getenv('PGPASSWORD'),
+        'HOST': os.getenv('PGHOST'),
+        'PORT': '5432',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
