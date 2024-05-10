@@ -23,7 +23,6 @@ DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', 'localhost', '.now.sh']
 
-
 # Application definition
 
 INSTALLED_APPS = [
