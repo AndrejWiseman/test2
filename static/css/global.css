@@ -1,0 +1,9 @@
+h1 {
+    color: blue;
+    text-align: center;
+}
+.kontejner {
+    max-width: 500px;
+    border: 1px solid gray;
+    margin: 30px auto;
+}
