@@ -1,7 +1,7 @@
 import os
-# from os import getenv
 from pathlib import Path
 from dotenv import load_dotenv
+import cloudinary_storage
 
 load_dotenv()
 
@@ -16,10 +16,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG') == 'True'
-# DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', 'localhost', '.now.sh']
 
@@ -33,6 +31,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'cloudinary',
+    'cloudinary_storage',
 
     'proba',
 ]
@@ -72,28 +73,7 @@ WSGI_APPLICATION = 'test2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'postgres',
-#         'USER': 'postgres.tzjjbxwzsqqawowduqdu',
-#         'PASSWORD': 'prnjavor2000',
-#         'HOST': 'aws-0-eu-central-1.pooler.supabase.com',
-#         'PORT': '5432',
-#     }
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('PGDATABASE'),
-#         'USER': os.getenv('PGUSER'),
-#         'PASSWORD': os.getenv('PGPASSWORD'),
-#         'HOST': os.getenv('PGHOST'),
-#         'PORT': '5432',
-#     }
-# }
-
+# Supabase
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -104,6 +84,13 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
+    'API_KEY': os.getenv('API_KEY'),
+    'API_SECRET': os.getenv('API_SECRET')
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -140,7 +127,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
     # '/proba/static/css/',
