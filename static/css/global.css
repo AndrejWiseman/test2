@@ -1,5 +1,9 @@
+
+body {
+    background-color: #00363a;
+}
 h1 {
-    color: blue;
+    color: cornflowerblue;
     text-align: center;
 }
 .kontejner {
